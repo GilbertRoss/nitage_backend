@@ -4,13 +4,17 @@ let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
 let indexRouter = require('./routes/index');
+let authRouter = require('./routes/auth')
 
 let app = express();
 let port = 8080
 
 let allowCrossDomain = function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', "*");
-  res.header('Access-Control-Allow-Headers', "*");
+  res.header('Access-Control-Allow-Origin', "http://localhost:3000");
+  res.header('Access-Control-Allow-Headers', "http://localhost:3000");
+  res.header('Access-Control-Allow-Credentials', 'true')
+  res.header('Access-Control-Allow-Methods', 'PATCH, GET, POST');
+  res.header("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization")
   next();
 }
 app.use(allowCrossDomain);
@@ -21,6 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use('/', indexRouter);
+app.use('/auth', authRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
