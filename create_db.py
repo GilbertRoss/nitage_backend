@@ -28,10 +28,12 @@ def insertDataDB():
 
         for invoice in invoices:
             for payment in invoice["payments_list"]:
+                i = 1
                 cur.execute(
-                sql.SQL("INSERT INTO {table} VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s, %s)")
-                    .format(table=sql.Identifier(table_name)),[str(uuid.uuid4()), str(invoice["date"]), str(invoice["number"]),str(payment["due_date"]), str(payment["amount"]), str(payment["status"]),str(invoice["id"]),str(invoice["entity"]["id"]),str(invoice["entity"]["name"]),str(invoice["entity"]["vat_number"]), str(invoice["url"])]
+                sql.SQL("INSERT INTO {table} VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s, %s, %s)")
+                    .format(table=sql.Identifier(table_name)),[str(uuid.uuid4()), str(invoice["date"]), str(invoice["number"]),str(payment["due_date"]), str(payment["amount"]), str(payment["status"]),str(invoice["id"]),str(invoice["entity"]["id"]),str(invoice["entity"]["name"]),str(invoice["entity"]["vat_number"]), str(invoice["url"]), str(i)+"/"+str(len(invoice["payments_list"]))]
                     )
+                i+=1
             conn.commit()
         print("Saved invoices...")
 

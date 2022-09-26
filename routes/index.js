@@ -11,7 +11,7 @@ router.get('/invoices', JWTAuthorize.authenticateJWT ,async function(req, res, n
   })
 });
 
-router.patch('/invoices', async function(req, res, next){
+router.patch('/invoices',JWTAuthorize.authenticateJWT, async function(req, res, next){
   const {id, date} = req.body;
   try{
     Db_Handler.updateInvoice(date, id);
