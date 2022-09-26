@@ -11,7 +11,7 @@ load_dotenv()
 def insertDataDB():
     try:
 
-        conn = psycopg2.connect(f'dbname={os.environ.get("POSTGRES_DB")} user={os.environ.get("POSTGRES_USER")} password={os.environ.get("POSTGRES_PASSWORD")}')
+        conn = psycopg2.connect(f'dbname={os.environ.get("POSTGRES_DB")} user={os.environ.get("POSTGRES_USER")} password={os.environ.get("POSTGRES_PASSWORD")} host=localhost')
         querystring = {"type":"invoice","fieldset":"detailed","page":"1","per_page":"1000","q":"next_due_date!=null"}
 
         url = "https://api-v2.fattureincloud.it/c/623774/issued_documents"

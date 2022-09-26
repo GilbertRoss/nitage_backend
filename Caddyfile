@@ -1,0 +1,8 @@
+{
+    admin 0.0.0.0:2020
+}
+
+static.240.172.119.168.clients.your-server.de {
+	reverse_proxy static.240.172.119.168.clients.your-server.de:8080
+
+}

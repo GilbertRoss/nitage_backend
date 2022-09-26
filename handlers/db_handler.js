@@ -6,7 +6,6 @@ const bcrypt = require('bcrypt');
 async function getInvoices() {
     try {
         const client = new Client({
-            port: process.env.PORT,
             user: process.env.POSTGRES_USER,
             password: process.env.POSTGRES_PASSWORD,
             database: process.env.POSTGRES_DB, 
@@ -29,7 +28,6 @@ async function getInvoices() {
 async function insertInvoice(){
     try{
         const client = new Client({
-            port: process.env.PORT,
             user: process.env.POSTGRES_USER,
             password: process.env.POSTGRES_PASSWORD,
             database: process.env.POSTGRES_DB, 
@@ -53,7 +51,6 @@ async function insertInvoice(){
 async function updateInvoice(date,id){
     try{
         const client = new Client({
-            port: process.env.PORT,
             user: process.env.POSTGRES_USER,
             password: process.env.POSTGRES_PASSWORD,
             database: process.env.POSTGRES_DB, 
@@ -76,8 +73,8 @@ async function updateInvoice(date,id){
 
 async function insertUser(username, password){
     try{
+        console.log(process.env.POSTGRES_PASSWORD)
         const client = new Client({
-            port: process.env.PORT,
             user: process.env.POSTGRES_USER,
             password: process.env.POSTGRES_PASSWORD,
             database: process.env.POSTGRES_DB, 
@@ -105,7 +102,6 @@ async function insertUser(username, password){
 async function checkUserExistence(username) {
     try{
         const client = new Client({
-            port: process.env.PORT,
             user: process.env.POSTGRES_USER,
             password: process.env.POSTGRES_PASSWORD,
             database: process.env.POSTGRES_DB, 
@@ -132,7 +128,6 @@ async function checkUserExistence(username) {
 async function CreadentialsCheck(username, password){
     try{
         const client = new Client({
-            port: process.env.PORT,
             user: process.env.POSTGRES_USER,
             password: process.env.POSTGRES_PASSWORD,
             database: process.env.POSTGRES_DB, 

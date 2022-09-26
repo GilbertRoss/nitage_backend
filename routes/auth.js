@@ -3,10 +3,9 @@ let router = express.Router();
 require('dotenv').config()
 const Db_Handler = require('../handlers/db_handler')
 let jwt = require('jsonwebtoken');
+const JWTAuthorize = require('../middlewares/authenticateJWT')
 
 
-
-/* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
@@ -34,7 +33,7 @@ router.post('/login', async (req, res) => {
   
 });
 
-router.post('/register', (req,res) => {
+router.post('/register', JWTAuthorize.authenticateJWT, (req,res) => {
   const {username, password} = req.body;
   console.log(username);
   console.log(password)
