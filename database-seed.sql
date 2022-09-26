@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS "invoices" (
     "company_name" VARCHAR(256) NOT NULL,
     "vat_number" VARCHAR(256) NOT NULL,
 	"url" VARCHAR(256) NOT NULL,
+    "installment" VARCHAR(64) NOT NULL,
 	PRIMARY KEY ("id")
 );
 
